@@ -12,6 +12,7 @@
 
 html {
     background-color: #EDEFEE;
+    height: 100%;
 }
 
 body {
@@ -189,25 +190,25 @@ input[type="button"]:active {
 }
 
 .reviews {
-    width: 480px; 
+    width: 800px; 
     justify-self: center;
     grid-row-start: 3;
 }
 
 .review {
-    line-height: 10px;
     display: flex;
     align-items: center;
+    
 }
 
 .reviewDiscription {
-    line-height: 0px;
     margin-left: 50px;
 }
 
 img#user {
     width: 40px;
     height: 40px;
+    margin-right: 4px;
 }
 
 .related {
