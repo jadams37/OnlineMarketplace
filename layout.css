@@ -255,3 +255,50 @@ p#copyright {
 }
 
 .hidden {
+    display: none;
+}
+.profile-page {
+    padding: 1rem;
+  }
+  
+  .profile-info, .user-listings, .transaction-history, .user-reviews {
+    margin-bottom: 2rem;
+  }
+  
+  .profile-pic {
+    width: 100px;
+    border-radius: 50%;
+  }
+  
+  .product-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .product-card img {
+    width: 80px;
+    margin-right: 1rem;
+  }.profile-page {
+    padding: 1rem;
+  }
+  
+  .profile-info, .user-listings, .transaction-history, .user-reviews {
+    margin-bottom: 1rem;
+  }
+  
+  .profile-pic {
+    width: 100px;
+    border-radius: 50%;
+  }
+  
+  .product-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .product-card img {
+    width: 80px;
+    margin-right: 1rem;
+  }
