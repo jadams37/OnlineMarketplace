@@ -28,6 +28,7 @@ header {
     grid-row-start: 1;
     grid-column-start: 1;
     position: sticky;
+    z-index: 999;
     top: 0;
     grid-column-start: 2;
     grid-column: 1/-1;
