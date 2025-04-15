@@ -29,6 +29,7 @@ header {
     grid-column-start: 1;
     position: sticky;
     margin: 0;
+    z-index: 999;
     top: 0;
     grid-column: 1/-1;
     max-height: 55px;
@@ -252,3 +253,5 @@ p#copyright {
     justify-self: center;
     font-size: 12px;
 }
+
+.hidden {

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Christian East" />
+  <meta name="description" content="User profile page for marketplace" />
+  <title>Online Marketplace - User Profile</title>
+  <link href="layout.css" rel="stylesheet" />
+  <link href="appearance.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+<body>
+  <header>
+    <nav id="header">
+      <a id="logo">logo</a>
+      <a href="home.html" id="home">Home</a>
+      <form action="">
+        <div class="search">
+          <span class="search-icon material-symbols-outlined">search</span>
+          <input class="search-input" type="search" placeholder="Search">
+        </div>
+      </form>
+      <a href="https://amazon.com" id="cart">Cart</a>
+      <a href="profile.html" id="profile">
+        <img src="profile.png" alt="Profile" id="profile">
+      </a>
+    </nav>
+  </header>
+
+  <article>
+    <div class="container profile-page">
+      <!-- Profile Info -->
+      <section class="profile-info">
+        <img src="profile.png" alt="User Profile Picture" class="profile-pic" />
+        <!-- Display View -->
+        <div id="display-view">
+            <h2 id="display-name">Custom Stickers LA</h2>
+            <p id="display-location">Los Angeles, CA</p>
+            <p id="display-role">Seller</p>
+            <p id="display-rating">★★★★☆ (4.2/5)</p>
+            <p id="display-email">custom_stickers@exam.com</p>
+            <p id="display-phone">(337) 123-4567</p>
+            <button id="edit-btn">Edit Account</button>
+        </div>
+
+        <!-- Edit Form View -->
+  <form id="edit-form" class="hidden">
+    <label>
+      Name:
+      <input type="text" id="input-name" value="Custom Stickers LA"/>
+    </label>
+    <br>
+    <label>
+      Location:
+      <input type="text" id="input-location" value="Los Angeles, CA" />
+    </label>
+    <br>
+    <label>
+      Role:<br>
+      <label for="input-role">Seller</label>
+      <input type="radio" id="input-seller" name="input-role" value="Seller" /><br>
+      <label for="input-role">Buyer</label>
+      <input type="radio" id="input-buyer" name="input-role" value="Buyer"/><br>
+    </label>
+    <br>
+    <label>
+      Email:
+      <input type="email" id="input-email" value="custom_stickers@exam.com" />
+    </label>
+    <br>
+    <label>
+      Phone:
+      <input type="tel" id="input-phone" value="(337) 123-4567" />
+    </label>
+    <br>
+    <button type="button" id="save-btn">Save Changes</button>
+    <button type="button" id="cancel-btn">Cancel</button>
+  </form>
+
+      </section>
+
+      <hr>
+
+      <!-- Listings -->
+      <section class="user-listings">
+        <h3>Your Listings</h3>
+        <div class="product-card">
+          <img src="profile.png" alt="Product Image">
+          <div>
+            <h4>Gummy Bear Salute Sticker</h4>
+            <p>$3.99 - Stickers/Logos/Tags</p>
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
+        </div>
+        <div class="product-card">
+          <img src="profile.png" alt="Product Image">
+          <div>
+            <h4>Angry Dog Sticker</h4>
+            <p>$5.99 - Stickers/Logos/Tags</p>
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
+        </div>
+        <button>Add Listing</button>
+      </section>
+
+      <hr>
+
+      <!-- Transaction History -->
+      <section class="transaction-history">
+        <h3>Transaction History</h3>
+        <ul>
+          <li>Sold “Gummy Bear Salute Sticker” to Alice — $3.99 on 2025-04-02</li>
+          <li>Sold “Fish with Sunglasses Sticker” to Bob — $6.99 on 2025-03-28</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <!-- Reviews -->
+      <section class="user-reviews">
+        <h3>Reviews From Buyers</h3>
+        <div class="review">
+          <img src="profile.png" alt="User Icon" id="user">
+          <strong>Alice</strong>
+          <p>“Cool Sticker!” ★★★★★</p>
+        </div>
+        <div class="review">
+          <img src="profile.png" alt="User Icon" id="user">
+          <strong>Bob</strong>
+          <p>“Shipping was a little slow, but worth the wait.” ★★★★☆</p>
+        </div>
+      </section>
+    </div>
+  </article>
+
+  <footer>
+    <nav id="footer">
+      <a href="#" id="logo">logo</a>
+      <a href="#">Customer Care</a>
+      <a href="#">Legal Use</a>
+      <a href="#">Careers</a>
+      <a href="#">Follow Us</a>
+    </nav>
+    <p id="copyright">&copy; 2025, Interactive Web Designs</p>
+  </footer>
+
+  <!--Account Settings JS-->
+  <script src="edit-acct.js"></script>
+</body>
+</html>

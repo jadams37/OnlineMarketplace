@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Online Marketplace Mockup</title>
+  <title>Online Marketplace</title>
   <link rel="stylesheet" href="results.css">
 </head>
 <body>
-  <!-- SIDEBAR-->
+  <!-- Sidebar -->
   <aside id="sidebar">
     <ul>
       <li>Apps</li>
@@ -18,7 +18,7 @@
     </ul>
   </aside>
   
-  <!-- HEADER -->
+  <!-- Header -->
   <header>
     <div class="header-left">
       <!-- Menu Toggle Icon -->
@@ -28,7 +28,9 @@
         <span></span>
       </div>
       <!-- Logo Placeholder -->
-      <div class="logo">WebMarket</div>
+      <div class="logo">
+        <img src="https://via.placeholder.com/100x50?text=Logo" alt="Logo" />
+      </div>
     </div>
     <div class="header-center">
       <div class="home-link">Home</div>
@@ -38,18 +40,18 @@
       <div class="cart">Cart</div>
     </div>
     <div class="header-right">
-      <!-- Profile Icon Placeholder -->
+      <!-- Profile Icon -->
       <div class="profile-icon">
-        <img src="https://via.placeholder.com/30" alt="Profile" />
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Profile Icon" />
       </div>
     </div>
   </header>
   
-  <!-- CONTENT -->
+  <!-- Result page content -->
   <div class="main-wrapper">
     <main>
       <div class="products-grid">
-        <!-- Example Product Cards -->
+        <!-- First 12 Product Cards with their price tag -->
         <div class="product-card">
           <div class="product-image"></div>
           <div class="product-name">Product Name 1</div>
@@ -80,11 +82,41 @@
           <div class="product-name">Product Name 6</div>
           <div class="product-price">$35.99</div>
         </div>
+        <div class="product-card">
+          <div class="product-image"></div>
+          <div class="product-name">Product Name 7</div>
+          <div class="product-price">$29.99</div>
+        </div>
+        <div class="product-card">
+          <div class="product-image"></div>
+          <div class="product-name">Product Name 8</div>
+          <div class="product-price">$49.99</div>
+        </div>
+        <div class="product-card">
+          <div class="product-image"></div>
+          <div class="product-name">Product Name 9</div>
+          <div class="product-price">$19.99</div>
+        </div>
+        <div class="product-card">
+          <div class="product-image"></div>
+          <div class="product-name">Product Name 10</div>
+          <div class="product-price">$22.99</div>
+        </div>
+        <div class="product-card">
+          <div class="product-image"></div>
+          <div class="product-name">Product Name 11</div>
+          <div class="product-price">$33.99</div>
+        </div>
+        <div class="product-card">
+          <div class="product-image"></div>
+          <div class="product-name">Product Name 12</div>
+          <div class="product-price">$44.99</div>
+        </div>
       </div>
     </main>
   </div>
   
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer>
     <div class="footer-links">
       <a href="#">Customer Care</a>
@@ -92,12 +124,12 @@
       <a href="#">Careers</a>
       <a href="#">Follow Us</a>
     </div>
-    <div class="copy">© 2025, Interactive Web Designs</div>
+    <div class="copy">© 2025, theMarket</div>
   </footer>
   
   <script>
     // Toggle the sidebar when the menu icon is clicked.
-    // same icon opens and closes the sidebar.
+    // The same menu icon opens and closes the sidebar.
     document.getElementById('menu-icon').addEventListener('click', function() {
       document.getElementById('sidebar').classList.toggle('active');
     });
