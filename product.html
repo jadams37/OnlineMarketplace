@@ -13,7 +13,7 @@
     <body>
         <header>
             <nav id="header">
-                <a id="logo">logo</a>
+                <a id="logo">theMarket</a>
                 <a href="home.html" id="home">Home</a>
                 <form action="">
                     <div class="search">
@@ -21,7 +21,7 @@
                         <input class="search-input" type="search" placeholder="Search">
                     </div>
                 </form>
-                <a href="https://amazon.com" id="cart">Cart</a>
+                <a href="" id="cart">Cart</a>
                 <a href="profile.html" id="profile">
                     <img src="profile.png" alt="Profile" id="profile">
                 </a>
@@ -50,9 +50,18 @@
                 </div>
             </div>
             <div class="purchase">
+                <script>
+                    function addToCart() {
+                        alert("Added Item to Cart!")
+                    }
+
+                    function purchase() {
+                        alert("Item purchased!")
+                    }
+                </script>
                 <form action="">
-                    <input type="button" value="Purchase">
-                    <input type="button" value="Add to Cart">
+                    <input type="button" value="Purchase" onclick="purchase()">
+                    <input type="button" value="Add to Cart" onclick="addToCart()">
                 </form>
             </div>
             <div class="reviews">
@@ -119,10 +128,6 @@
                 <div class="reviewDiscription">
                     <p>Two are on their way. I am so excited!</p>
                 </div>
-                <div class="review">
-                    <img src="profile.png" alt="user" id="user">
-                    <strong>User</strong>
-                </div>
             </div>
             <div class="related">
                 <hr>
@@ -135,11 +140,11 @@
         </article>
         <footer>
             <nav id="footer">
-                <a href="https://amazon.com" id="logo">logo</a>
-                <a href="https://amazon.com">Customer Care</a>
-                <a href="https://amazon.com">Legal Use</a>
-                <a href="https://amazon.com">Careers</a>
-                <a href="https://amazon.com">Follow Us</a>
+                <a href="" id="logo">theMarket</a>
+                <a href="">Customer Care</a>
+                <a href="">Legal Use</a>
+                <a href="">Careers</a>
+                <a href="">Follow Us</a>
             </nav>
             <p id="copyright">&copy; 2025, Interactive Web Designs</p>
         </footer>
