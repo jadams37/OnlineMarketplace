@@ -80,9 +80,9 @@ header {
 }
 
 /* Logo Placeholder */
-.logo img {
-    max-width: 100%;
-    height: auto;
+.logo {
+    font-size: 20px;
+    font-weight: bold;
 }
 
 /* Centered items */
