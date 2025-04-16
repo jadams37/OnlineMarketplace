@@ -33,7 +33,7 @@ header {
     top: 0;
     grid-column: 1/-1;
     max-height: 55px;
-	padding: 8px 8px 8px 8px;
+    padding: 8px 8px 8px 8px;
 	background: #AA210F;
 	border-color: #AA210F;
 	border-width: 1px;
@@ -282,7 +282,7 @@ p#copyright {
     width: 80px;
     margin-right: 1rem;
   }
-  
+
   .profile-page {
     padding: 1rem;
   }
