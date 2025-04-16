@@ -281,7 +281,9 @@ p#copyright {
   .product-card img {
     width: 80px;
     margin-right: 1rem;
-  }.profile-page {
+  }
+  
+  .profile-page {
     padding: 1rem;
   }
   
