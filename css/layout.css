@@ -66,6 +66,10 @@ a#logo {
     margin-top: 10px;
 }
 
+#search {
+    margin-top: 11px;
+}
+
 .search {
     width: max-content;
     height: 10px;
