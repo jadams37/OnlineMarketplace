@@ -240,6 +240,10 @@
     flex-direction: column;
     align-items: center;
   }
+
+  footer h3 {
+    color: #EDEFEE
+  }
   
   .footer-container {
     max-width: 1200px;
