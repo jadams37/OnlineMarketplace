@@ -1,0 +1,311 @@
+ /* 1) Color Variables */
+ :root {
+    --dark-red: #AA210F;
+    --light-orange: #D08856;
+    --dark-grey: #444444;
+  }
+  
+  /* 2) Resetting the base after changing header over */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    color: var(--dark-grey);
+    line-height: 1.6;
+    background-color: #fff;
+  }
+  
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--dark-grey);
+    margin-bottom: 0.5rem;
+  }
+  
+  /* 3) Enitity's Header */
+  header {
+    /* Sticky, dark red header with rounded bottom corners */
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    max-height: 55px;
+    padding: 8px;
+    background-color: var(--dark-red);
+    border: 1px solid var(--dark-red);
+    border-radius: 0 0 10px 10px;
+  }
+  
+  /* Navigation bar uses grid for horizontal spacing */
+  nav#header {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto 5% auto 5% auto;
+    align-items: center;
+  }
+  
+  /* General link styling in header */
+  a {
+    color: #EDEFEE;
+    text-decoration: none;
+    justify-self: center;
+  }
+  
+  /* Logo alignment */
+  a#logo {
+    justify-self: start;
+    margin-top: 10px;
+  }
+  
+  /* Tweaking the spacing of other links*/
+  a#home,
+  a#search,
+  a#cart {
+    margin-top: 10px;
+  }
+  
+  a#profile {
+    justify-self: end;
+  }
+  
+  /* Profile image inside header */
+  #profile-img {
+    width: 48px;
+    height: 48px;
+  }
+  
+  /* 4) Deals Section */
+  .deals-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    border-radius: 8px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .deals-content {
+    flex: 1;
+    margin-right: 2rem;
+  }
+  
+  .deals-content h2 {
+    font-size: 2rem;
+  }
+  
+  .sale-alert {
+    color: var(--dark-red);
+    font-weight: bold;
+  }
+  
+  .deals-image {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .deals-image img {
+    max-width: 300px;
+    width: 100%;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+  }
+  
+  /* 5) Featured Categories */
+  .featured-categories {
+    text-align: center;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .featured-categories p {
+    margin-bottom: 2rem;
+  }
+  
+  .categories-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  
+  .category-card {
+    flex: 1 1 150px;
+    max-width: 200px;
+    text-align: center;
+  }
+  
+  .category-card img {
+    max-width: 80px;
+    margin-bottom: 1rem;
+  }
+  
+  /* 6) Recently Viewed */
+  .recently-viewed {
+    text-align: center;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .recently-items {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  
+  .recently-card {
+    width: 150px;
+    text-align: center;
+  }
+  
+  .recently-card img {
+    max-width: 100px;
+    margin-bottom: 1rem;
+  }
+  
+  /* 7) About Section */
+  .about-section {
+    text-align: center;
+    padding: 2rem 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .about-section p {
+    margin-bottom: 1rem;
+  }
+  
+  /* 8) Buttons */
+  .btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid;
+    background-color: transparent;
+    font-size: 1rem;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  /* Purchase button with dark red to differ from the light orange add to cart one */
+  .btn-purchase {
+    border-color: var(--dark-red);
+    color: var(--dark-red);
+  }
+  
+  .btn-purchase:hover {
+    background-color: var(--dark-red);
+    color: #fff;
+  }
+  
+  /* Add-to-Cart button with light orange */
+  .btn-addcart {
+    border-color: var(--light-orange);
+    color: var(--light-orange);
+  }
+  
+  .btn-addcart:hover {
+    background-color: var(--light-orange);
+    color: #fff;
+  }
+  
+  /* 9) Light Orange & Bold for Paragraphs */
+  .featured-categories p,
+  .recently-viewed p,
+  .about-section p {
+    color: var(--light-orange);
+    font-weight: bold;
+  }
+  
+  /* 10) Footer */
+  footer {
+    background-color: var(--dark-red);
+    color: #fff;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    width: 100%;  
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+  }
+  
+  .footer-column {
+    flex: 1 1 200px;
+    min-width: 200px;
+  }
+  
+  .footer-column:last-of-type {
+    display: flex;
+    flex-direction: column;
+    justify-content: left; 
+    align-items: left;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 10px; 
+    justify-content: center; 
+    margin-top: 10px;
+  }
+  
+  .footer-bottom {
+    width: 100%;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  /* Social Icons styling */
+  .social-icons {
+    display: flex;
+    gap: 10px;              
+    justify-content: center;
+    align-items: left;
+    margin-top: 10px;      
+  }
+  
+  .social-icons a img {
+    width: 32px;            
+    height: 32px;           
+    transition: transform 0.3s ease; 
+  }
+  
+  .social-icons a img:hover {
+    transform: scale(1.1);  
+  }
+  
+  /* 11) Responsive Media Queries */
+  @media (max-width: 992px) {
+    /* Deals Section stacked on small screens */
+    .deals-section {
+      flex-direction: column;
+      text-align: center;
+    }
+    .deals-content {
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
+    .deals-image {
+      margin-top: 1rem;
+    }
+  }

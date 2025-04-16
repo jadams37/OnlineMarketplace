@@ -33,7 +33,7 @@ header {
     top: 0;
     grid-column: 1/-1;
     max-height: 55px;
-	padding: 8px 8px 8px 8px;
+    padding: 8px 8px 8px 8px;
 	background: #AA210F;
 	border-color: #AA210F;
 	border-width: 1px;
@@ -64,6 +64,10 @@ a {
 a#logo {
     justify-self: start;
     margin-top: 10px;
+}
+
+#search {
+    margin-top: 11px;
 }
 
 .search {
@@ -183,6 +187,7 @@ input[type="button"] {
 	border-width: 3px;
 	border-style: solid;
 	border-radius: 50px 50px 50px 50px;
+    margin-left: 20px;
 }
 
 input[type="button"]:hover {
@@ -227,7 +232,8 @@ img#user {
 img#related {
     width: 240px;
     height: 240px;
-    margin-left: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
     border-color: #41403C;
 	border-width: 2px;
 	border-style: solid;
@@ -279,7 +285,9 @@ p#copyright {
   .product-card img {
     width: 80px;
     margin-right: 1rem;
-  }.profile-page {
+  }
+
+  .profile-page {
     padding: 1rem;
   }
   
