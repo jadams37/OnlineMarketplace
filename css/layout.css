@@ -180,32 +180,43 @@ h1#productName {
     line-height: 0;
 }
 
-.purchase {
+.transactions {
     justify-self: center;
     padding: 20px;
 }
 
-input[type="button"] {
+.purchase, .addtocart {
     width: 244px;
 	height: 65px;
     color: #41403C;
     font-size: 20px;
     background-color: transparent;
-	border-color: #D08556;
 	border-width: 3px;
 	border-style: solid;
 	border-radius: 50px 50px 50px 50px;
     margin-left: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
 }
 
-input[type="button"]:hover {
-    color: rgba(0, 0, 0, 0.50);
-    border-color: #d08556b9;
+.purchase {
+    border-color: #AA210F;
+    color: #41403C;
 }
 
-input[type="button"]:active {
+.purchase:hover {
+    background-color: #AA210F;
     color: #EDEFEE;
-    background-color: #D08556;
+}
+
+.addtocart {
+    border-color: #D08856;
+    color: #41403C;
+}
+
+.addtocart:hover {
+    background-color: #D08856;
+    color: #EDEFEE;
 }
 
 .reviews {
