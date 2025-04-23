@@ -98,6 +98,14 @@ a#logo {
     color: rgba(0, 0, 0, 0.5);
 }
 
+header a:hover, footer a:hover {
+    color: #edefeecb;
+}
+
+header a:active, footer a:active {
+    color: #edefee75;
+}
+
 a#home {
     justify-self: right;
     margin-top: 10px;
