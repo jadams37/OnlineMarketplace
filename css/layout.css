@@ -54,7 +54,7 @@ nav#footer {
     grid-row-start: 2;
 }
 
-a {
+header a, footer a {
     color: #EDEFEE;
     text-decoration: none;
     justify-self: center;
@@ -263,6 +263,67 @@ img#related {
 	border-width: 2px;
 	border-style: solid;
 	border-radius: 10px 10px 10px 10px;
+}
+
+.login-panel {
+    border-color: #AA210F;
+	border-width: 3px;
+	border-style: solid;
+	border-radius: 10px 10px 10px 10px;
+    background-color: transparent;
+    height: 480px;
+    width: 480px;
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-panel h1 {
+    text-align: center;
+}
+
+.login-input {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.login-input input {
+    padding: 5px 5px 5px 10px;
+    width: 75%;
+    font-size: 15px;
+    border-width: 1px;
+	border-style: solid;
+	border-radius: 50px 50px 50px 50px;
+    border-color: #41403C;
+}
+
+.login-button {
+    text-align: center;
+}
+
+.login-button input {
+    width: 40%;
+	height: 35px;
+    color: #41403C;
+    font-size: 18px;
+    background-color: transparent;
+	border-width: 3px;
+	border-style: solid;
+	border-radius: 50px 50px 50px 50px;
+    margin-left: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+    border-color: #D08856;
+}
+
+.login-button input:hover {
+    background-color: #D08856;
+    color: #EDEFEE;
+}
+
+.login-register {
+    text-align: center;
 }
 
 footer {
