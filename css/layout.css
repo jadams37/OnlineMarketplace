@@ -123,26 +123,7 @@ a#cart {
 }
 
 .profile:hover {
-
-}
-
-.login-panel {
-    display: flex;
-    width: 200px;
-    height: 100px;
-    position: absolute;
-    top: 60px;
-    right: 0px;
-    background-color: #AA210F;
-    border-radius: 10px 10px 10px 10px;
-    border-width: 2px;
-	border-style: solid;
-    border-color: #41403C;
-}
-
-.login-panel form {
-    align-self: center;
-    text-align: center;
+    
 }
 
 img#profile {
