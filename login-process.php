@@ -57,7 +57,7 @@
     $stmt->bind_param("sssssss", $user, $pass, $email, $address, $phone, $fname, $lname);
 
     if($stmt->execute()) {
-        header("Location: home.html");
+        header("Location: home.php");
         exit;
     }
 

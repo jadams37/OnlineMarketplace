@@ -16,7 +16,7 @@
                 session_start();
                 $_SESSION["user_id"] = $user["user_id"];
 
-                header("Location: home.html");
+                header("Location: home.php");
                 exit;
             }
         }
@@ -43,8 +43,8 @@
         <header>
             <!-- Navigation Bar -->
             <nav id="header">
-                <a id="logo" href="home.html">theMarket</a>
-                <a href="home.html" id="home">Home</a>
+                <a id="logo" href="home.php">theMarket</a>
+                <a href="home.php" id="home">Home</a>
                 <form action="" method="">
                     <div class="search">
                         <span class="search-icon material-symbols-outlined">search</span>
@@ -83,7 +83,7 @@
         <footer>
             <!-- Contains a secondary navigation bar and the copyright -->
             <nav id="footer">
-                <a id="logo" href="home.html">theMarket</a>
+                <a id="logo" href="home.php">theMarket</a>
                 <a href="">Customer Care</a>
                 <a href="">Legal Use</a>
                 <a href="">Careers</a>
