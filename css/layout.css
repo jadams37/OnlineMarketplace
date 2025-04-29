@@ -349,7 +349,7 @@ p#copyright {
     padding: 1rem;
   }
   
-  .profile-info, .user-listings, .transaction-history, .user-reviews {
+  .profile-info, .user-listings, .transaction-history, .user-reviews, .user-management {
     margin-bottom: 2rem;
   }
   
