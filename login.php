@@ -1,4 +1,6 @@
 <?php
+    $is_invalid = false;
+
     if($_SERVER["REQUEST_METHOD"] === "POST") {
         $mysqli = require __DIR__ . "\db-connection.php";
 
@@ -8,6 +10,19 @@
         $result = $mysqli->query($sql);
 
         $user = $result->fetch_assoc();
+
+        if($user) {
+            if(password_verify($_POST["password"], $user["user_password"])) {
+                session_start();
+                $_SESSION["user_id"] = $user["user_id"];
+
+                header("Location: home.html");
+                exit;
+            }
+        }
+
+        $is_invalid = true;
+
     }
 ?>
 <!DOCTYPE html>
@@ -44,14 +59,17 @@
         </header>
         <article>
             <div class="login-panel">
-                <form method="post">
+                <form method="post" novalidate>
                     <h1>Welcome back to theMarket!</h1>
                     <div class="login-input">
-                        <input type="text" name="username" placeholder="Username" required>
+                        <input type="text" name="username" placeholder="Username" value="<?= htmlspecialchars($_POST["username"] ?? "")?>" required>
                     </div>
                     <div class="login-input">
                         <input type="password" name="password" placeholder="Password" required>
                     </div>
+                    <?php if($is_invalid): ?>
+                        <p style="color:red; font-size:12px; text-align:center">Incorrect Username or Password</p>
+                    <?php endif; ?>
                     <div class="login-button">
                         <input type="submit" value="Login">
                     </div>
