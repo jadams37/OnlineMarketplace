@@ -24,11 +24,16 @@
                 <input class="search-input" type="search" placeholder="Search">
             </div>
         </form>
-        <!--<a href="results.html" id="search">Search</a>-->
         <a href="" id="cart">Cart</a>
-        <a href="profile.html" class="profile">
+        <?php if(isset($_SESSION["user_id"])): ?>
+          <a href="profile.html" class="profile">
             <img src="images/profile.png" alt="Profile" id="profile">
-        </a>
+          </a>
+        <?php else: ?>
+          <a href="login.php" class="profile">
+            <img src="images/profile.png" alt="Profile" id="profile">
+          </a>
+        <?php endif; ?>
     </nav>
   </header>
 
