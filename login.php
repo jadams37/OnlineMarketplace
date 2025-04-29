@@ -15,6 +15,7 @@
             if(password_verify($_POST["password"], $user["user_password"])) {
                 session_start();
                 $_SESSION["user_id"] = $user["user_id"];
+                session_regenerate_id();
 
                 header("Location: home.php");
                 exit;
