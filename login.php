@@ -1,3 +1,15 @@
+<?php
+    if($_SERVER["REQUEST_METHOD"] === "POST") {
+        $mysqli = require __DIR__ . "\db-connection.php";
+
+        $sql = sprintf("SELECT * FROM user
+                WHERE user_name = '%s'", $mysqli->real_escape_string($_POST["username"]));
+
+        $result = $mysqli->query($sql);
+
+        $user = $result->fetch_assoc();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -32,7 +44,7 @@
         </header>
         <article>
             <div class="login-panel">
-                <form action="login-process.php" method="post">
+                <form method="post">
                     <h1>Welcome back to theMarket!</h1>
                     <div class="login-input">
                         <input type="text" name="username" placeholder="Username" required>
