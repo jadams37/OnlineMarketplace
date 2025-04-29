@@ -267,7 +267,7 @@ img#related {
 	border-style: solid;
 	border-radius: 10px 10px 10px 10px;
     background-color: transparent;
-    height: 480px;
+    height: 100%;
     width: 480px;
     display: flex;
     justify-self: center;
@@ -349,7 +349,7 @@ p#copyright {
     padding: 1rem;
   }
   
-  .profile-info, .user-listings, .transaction-history, .user-reviews, .user-management {
+  .profile-info, .user-listings, .transaction-history, .user-reviews {
     margin-bottom: 2rem;
   }
   
