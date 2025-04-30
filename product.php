@@ -6,7 +6,7 @@
     $sql = sprintf("SELECT listing_id, products.product_id, listing_price, product_name, product_brand, product_description, product_image
                     FROM listing
                     JOIN products ON listing.product_id = products.product_id
-                    WHERE listing_id = 2");
+                    WHERE listing_id = 1");
 
     $result = $mysqli->query($sql);
 
@@ -20,17 +20,27 @@
         $pimage = $product['product_image'];
     }
 
-    $sql = sprintf("SELECT review_listing_id, review_user_id, user_name, review_description
+    $sql = sprintf("SELECT review_listing_id, review_user_id, user_name, review_description, review_rating
                     FROM review
                     JOIN user ON review.review_user_id = user.user_id
-                    WHERE review_listing_id = 2");
+                    WHERE review_listing_id = 1");
 
     $result = $mysqli->query($sql);
 
     $reviews = [];
 
+    $avgreview = number_format(0, 1);
+    $total = 0;
+    $count = 0;
+
     while($review = $result->fetch_assoc()) {
+        $count++;
+        $total += (int)$review['review_rating'];
         $reviews[] = $review;
+    }
+
+    if($total > 0 && $count != 0) {
+        $avgreview = number_format($total / $count, 1);
     }
 ?>
 <!DOCTYPE html>
@@ -82,7 +92,7 @@
                 <div class="description">
                     <h1 id="productName"><?= $pname?></h1>
                     <u><strong><?= $pbrand?></strong></u><br>
-                    <strong>$<?= $pprice?> ★★★★☆ (4.5)</strong><br>
+                    <strong>$<?= $pprice?> <?= str_repeat('★', (int)$avgreview) . str_repeat('☆', 5 - (int)$avgreview) ?> <?= sprintf("(%s)", $avgreview) ?></strong><br>
                     <hr>
                     <p id="description">
                         <?= $pdesc?>
@@ -102,14 +112,21 @@
                     <?php foreach($reviews as $review): ?>
                         <div class="review">
                             <img src="images/profile.png" alt="user" id="user">
-                            <strong><?= htmlspecialchars($review['user_name']) ?> ★★★★☆</strong>
+                            <strong><?= htmlspecialchars($review['user_name'])?> <?= str_repeat('★', (int)$review['review_rating']) . str_repeat('☆', 5 - (int)$review['review_rating']) ?></strong>
                         </div>
                         <div class="reviewDiscription">
                             <p><?= htmlspecialchars($review['review_description']) ?></p>
                         </div>
                     <?php endforeach; ?>
+                    <?php if(isset($_SESSION["user_id"])): ?>
+                        <p><a href="">Write a review.</a></p>
+                    <?php endif ?>
                 <?php else: ?>
-                    <p>There are no reviews.</p>
+                    <?php if(isset($_SESSION["user_id"])): ?>
+                        <p>There are no reviews. <a href="">Write a review.</a></p>
+                    <?php else: ?>
+                        <p>There are no reviews.</p>
+                    <?php endif ?>
                 <?php endif ?>
             </div>
             <!-- Contains related products relevant to the current product -->
