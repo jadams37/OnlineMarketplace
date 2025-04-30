@@ -82,7 +82,7 @@
                     </div>
                     <div class="login-register">
                         <p>New User?
-                        <a href="signup.html">Create an Account</a></p>
+                        <a href="signup.php">Create an Account</a></p>
                     </div>
                 </form>
             </div>
