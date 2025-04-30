@@ -3,7 +3,7 @@
 
     $mysqli = require __DIR__ . "\db-connection.php";
 
-    $sql = sprintf("SELECT listing_id, products.product_id, listing_price, product_name, product_brand, product_description, product_image
+    $sql = sprintf("SELECT listing_id, products.product_id, category_id, listing_price, product_name, product_brand, product_description, product_image
                     FROM listing
                     JOIN products ON listing.product_id = products.product_id
                     WHERE listing_id = 1");
@@ -13,10 +13,12 @@
     $product = $result->fetch_assoc();
 
     if($product) {
+        $listing = $product['listing_id'];
         $pprice = $product['listing_price'];
         $pname = $product['product_name'];
         $pbrand = $product['product_brand'];
         $pdesc = $product['product_description'];
+        $pcat = $product['category_id'];
         $pimage = $product['product_image'];
     }
 
@@ -41,6 +43,20 @@
 
     if($total > 0 && $count != 0) {
         $avgreview = number_format($total / $count, 1);
+    }
+
+    $sql = sprintf("SELECT listing_id, products.product_id, category_id, listing_price, product_name, product_brand, product_description, product_image
+                    FROM listing
+                    JOIN products ON listing.product_id = products.product_id
+                    WHERE category_id = %d AND listing_id != %d
+                    LIMIT 4", $pcat, $listing);
+
+    $result = $mysqli->query($sql);
+
+    $related = [];
+
+    while($relatedprod = $result->fetch_assoc()) {
+        $related[] = $relatedprod;
     }
 ?>
 <!DOCTYPE html>
@@ -133,10 +149,9 @@
             <div class="related">
                 <hr>
                 <p>Related Products</p>
-                <img src="images/profile.png" alt="related product" id="related">
-                <img src="images/profile.png" alt="related product" id="related">
-                <img src="images/profile.png" alt="related product" id="related">
-                <img src="images/profile.png" alt="related product" id="related">
+                <?php foreach($related as $relateditem): ?>
+                    <img src="<?= sprintf("images/%s", $relateditem['product_image'])?>" alt="related product" id="related">
+                <?php endforeach; ?>
             </div>
         </article>
         <footer>
