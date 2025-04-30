@@ -25,7 +25,7 @@
     $sql = sprintf("SELECT review_listing_id, review_user_id, user_name, review_description, review_rating
                     FROM review
                     JOIN user ON review.review_user_id = user.user_id
-                    WHERE review_listing_id = 1");
+                    WHERE review_listing_id = %d", $listing);
 
     $result = $mysqli->query($sql);
 
