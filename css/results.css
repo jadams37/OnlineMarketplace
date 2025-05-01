@@ -84,7 +84,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 900;
-  background-color: #b70000;
+  background-color: #AA210F;
   height: 60px;
   width: 100%;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -215,7 +215,7 @@ header nav#header {
 .product-price {
   font-size: 18px;
   margin-bottom: 8px;
-  color: #b70000;
+  color: #AA210F;
   font-weight: bold;
 }
 .product-brand {
@@ -236,7 +236,7 @@ header nav#header {
   display: block;
   width: 100%;
   padding: 10px;
-  background: #b70000;
+  background: #AA210F;
   color: white;
   border: none;
   border-top: 1px solid #ddd;
@@ -250,9 +250,10 @@ header nav#header {
 
 /* FOOTER */
 footer {
-  background-color: #b70000;
+  background-color: #AA210F;
   color: #fff;
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

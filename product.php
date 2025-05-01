@@ -93,7 +93,7 @@
                             <input class="search-input" type="search" placeholder="Search">
                         </div>
                     </form>
-                    <a href="" id="cart">Cart</a>
+                    <a href="results.php" id="cart">Cart</a>
                 </div>
                 <?php if(isset($_SESSION["user_id"])): ?>
                     <a href="profile.php" class="profile">

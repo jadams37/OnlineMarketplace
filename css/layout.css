@@ -303,7 +303,7 @@ img#related {
 	border-radius: 10px 10px 10px 10px;
 }
 
-img#related:hover {
+a:hover img#related {
     border-color: #D08856;
 }
 
