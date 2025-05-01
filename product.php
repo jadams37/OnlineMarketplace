@@ -150,10 +150,15 @@
             <!-- Contains related products relevant to the current product -->
             <div class="related">
                 <hr>
-                <p>Related Products</p>
+                <p id="relatedtitle">Related Products</p>
+                <div class="related-subsection">
                 <?php foreach($related as $relateditem): ?>
-                    <img src="<?= sprintf("images/%s", $relateditem['product_image'])?>" alt="related product" id="related">
+                    <div class="related-item">
+                        <img src="<?= sprintf("images/%s", $relateditem['product_image'])?>" alt="related product" id="related">
+                        <a href="" id="relatedname"><?= $relateditem['product_name']?></a>
+                    </div>
                 <?php endforeach; ?>
+                </div>
             </div>
         </article>
         <footer>
