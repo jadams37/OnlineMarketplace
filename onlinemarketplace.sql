@@ -169,6 +169,23 @@ INSERT INTO `products` (`product_id`, `category_id`, `product_name`, `product_br
 
 -- --------------------------------------------------------
 
+
+--
+-- Table structure for table `role`
+--
+DROP TABLE IF EXISTS `cart`;
+CREATE TABLE cart (
+  cart_id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  listing_id INT NOT NULL,
+  quantity INT NOT NULL DEFAULT 1,
+  added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES user(user_id),
+  FOREIGN KEY (listing_id) REFERENCES listing(listing_id),
+  UNIQUE KEY (user_id, listing_id)
+);
+
+----------------------------------------------------------------
 --
 -- Table structure for table `role`
 --
