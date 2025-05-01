@@ -26,7 +26,6 @@ body {
 
 header {
     grid-row-start: 1;
-    grid-column-start: 1;
     position: sticky;
     margin: 0;
     z-index: 999;
@@ -42,16 +41,23 @@ header {
 }
 
 nav#header {
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: auto 40% auto 40% auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-center {
+    display: flex;
+    gap: 1rem;
 }
 
 nav#footer {
-    display: grid;
-    grid-template-rows: auto auto;
-    grid-template-columns: auto 5% 5% 5% 5% auto;
-    grid-row-start: 2;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav#footer .nav-center {
+    gap: 3rem;
 }
 
 header a, footer a {
@@ -61,7 +67,7 @@ header a, footer a {
 
 }
 
-a#logo {
+nav#header a#logo {
     justify-self: start;
     margin-top: 10px;
 }
@@ -326,7 +332,7 @@ footer {
     display: grid;
     grid-row-start: 3;
     grid-column-start: 1;
-    max-height: 60px;
+    height: 60px;
     grid-template-rows: 40% 60% auto;
     grid-column-start: 2;
     grid-column: 1/-1;
