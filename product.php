@@ -3,10 +3,17 @@
 
     $mysqli = require __DIR__ . "\db-connection.php";
 
+     // 1) Fetch the listing_id from the query string
+  $listing = filter_input(INPUT_GET, 'listing_id', FILTER_VALIDATE_INT);
+  if (!$listing) {
+    header('Location: home.php');
+    exit;
+  }
+
     $sql = sprintf("SELECT listing_id, products.product_id, category_id, listing_price, product_name, product_brand, product_description, product_image
                     FROM listing
                     JOIN products ON listing.product_id = products.product_id
-                    WHERE listing_id = 1");
+                    WHERE listing_id = %d", $listing);
 
     $result = $mysqli->query($sql);
 

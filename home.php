@@ -7,7 +7,7 @@
   // 2) query to fetch the most recent active deal
   $sql = "
   SELECT
-    d.deal_id,
+    l.listing_id,
     p.product_name,
     p.product_image,
     l.listing_price,
@@ -21,6 +21,7 @@
   WHERE CURDATE() BETWEEN d.start_date AND d.end_date
   ORDER BY d.start_date DESC
 ";
+
 $res   = $conn->query($sql);
 $deals = $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
 ?>
@@ -77,6 +78,7 @@ $deals = $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
     ?>
       <div class="deal-slide"
            data-index="<?= $i ?>"
+           data-listingid="<?= $d['listing_id'] ?>"
            data-name="<?= htmlspecialchars($d['product_name']) ?>"
            data-orig="<?= number_format($orig,2) ?>"
            data-disc="<?= number_format($disc,2) ?>"
@@ -96,7 +98,7 @@ $deals = $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
     <h3 id="dealName"></h3>
     <p class="price" id="dealPrice"></p>
     <div class="btn-group">
-      <a href="#" id="dealPurchase" class="btn btn-purchase">Purchase</a>
+      <a href="#" id="dealPurchase" class="btn btn-purchase">View Item</a>
       <a href="#" id="dealAddCart" class="btn btn-addcart">Add to Cart</a>
     </div>
   </div>
@@ -195,17 +197,28 @@ document.addEventListener('DOMContentLoaded', () => {
   let idx = 0;
 
   function showSlide(i) {
-    slides.forEach(s => s.style.display = 'none');
-    const s = slides[i];
-    s.style.display = 'block';
+  slides.forEach(s => s.style.display = 'none');
+  const s = slides[i];
+  s.style.display = 'block';
 
-    const name = s.dataset.name;
-    const orig = parseFloat(s.dataset.orig);
-    const disc = parseFloat(s.dataset.disc);
+  const name       = s.dataset.name;
+  const orig       = parseFloat(s.dataset.orig);
+  const disc       = parseFloat(s.dataset.disc);
+  const listingId  = s.dataset.listingid;
 
-    nameEl.textContent = name;
-    priceEl.innerHTML  = `<del>$${orig.toFixed(2)}</del> <span>$${disc.toFixed(2)}</span>`;
-  }
+  // Update the right-hand text
+  nameEl.textContent = name;
+  priceEl.innerHTML  = `<del>$${orig.toFixed(2)}</del> <span>$${disc.toFixed(2)}</span>`;
+
+  // Wire up the links
+  const purchaseBtn = document.getElementById('dealPurchase');
+  const cartBtn     = document.getElementById('dealAddCart');
+
+  purchaseBtn.textContent = 'View Item';
+  purchaseBtn.href        = `product.php?listing_id=${listingId}`;
+
+  cartBtn.href            = `cart.php?add=${listingId}`;
+}
 
   document.getElementById('prevDeal').addEventListener('click', () => {
     idx = (idx - 1 + slides.length) % slides.length;
