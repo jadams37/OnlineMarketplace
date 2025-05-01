@@ -296,10 +296,15 @@ img#related {
     height: 240px;
     margin-left: 10px;
     margin-right: 10px;
+    transition: border-color 0.2s;
     border-color: #41403C;
 	border-width: 2px;
 	border-style: solid;
 	border-radius: 10px 10px 10px 10px;
+}
+
+img#related:hover {
+    border-color: #D08856;
 }
 
 .login-panel {
