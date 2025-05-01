@@ -197,8 +197,8 @@
   font-size: 1.5rem;
   z-index: 10;
 }
-#prevDeal { left: -1rem; }
-#nextDeal { right: -1rem; }
+#prevDeal { left: -2.25rem; }
+#nextDeal { right: -2.5rem; }
 
 /* Right: text & buttons */
 .carousel-right {
@@ -277,6 +277,10 @@ section.deals-carousel-container {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
+  border-color: #41403C;
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 10px 10px 10px 10px;
 }
 /* 1) Kill the article grid so our sections can size normally */
 article {
