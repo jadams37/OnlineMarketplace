@@ -11,46 +11,6 @@
     margin-bottom: 0.5rem;
   }
   
-  /* 4) Deals Section */
-  .deals-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2rem;
-    width: 1080px;
-    margin: 2rem auto;
-    border-radius: 8px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 2rem;
-    margin-bottom: 2rem;
-    line-height: 1.6;
-  }
-  
-  .deals-content {
-    flex: 1;
-    margin-right: 2rem;
-  }
-  
-  .deals-content h2 {
-    font-size: 2rem;
-  }
-  
-  .sale-alert {
-    color: var(--dark-red);
-    font-weight: bold;
-  }
-  
-  .deals-image {
-    flex: 1;
-    text-align: center;
-  }
-  
-  .deals-image img {
-    max-width: 300px;
-    width: 100%;
-    border: 2px solid #444444;
-    border-radius: 8px;
-  }
   
   /* 5) Featured Categories */
   .featured-categories {
@@ -182,3 +142,201 @@
       margin-top: 1rem;
     }
   }
+  /* Container: two columns, equal height */
+.deals-carousel-container {
+  display: flex;
+  align-items: stretch;
+  max-width: 1200px;
+  margin: 2rem auto;
+  gap: 2rem;
+}
+
+/* Left: the image carousel */
+.carousel-left {
+  position: relative;
+  flex: 1;
+}
+
+/* Fix slide size and image fit */
+.deal-slide {
+  position: relative;
+  width: 100%;
+  height: 300px;
+}
+.deal-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Discount badge */
+.discount-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: var(--light-orange);
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  font-weight: bold;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+/* Carousel arrows */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.8);
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  z-index: 10;
+}
+#prevDeal { left: -1rem; }
+#nextDeal { right: -1rem; }
+
+/* Right: text & buttons */
+.carousel-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+}
+.carousel-right #dealName {
+  margin: 0.5rem 0;
+}
+.carousel-right .price del {
+  color: #888;
+  margin-right: 0.5rem;
+}
+.carousel-right .countdown {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+/* 1) Make the deals section into two equal columns */
+.deals-carousel-container {
+  display: flex;
+  flex-wrap: wrap;         /* allows wrapping on very narrow screens */
+  max-width: 1200px;  
+  margin: 2rem auto;
+  gap: 2rem;
+}
+
+/* 2) Ensure each side takes half the width */
+.deals-carousel-container > div {
+  flex: 1 1 50%;           /* grow/shrink, base 50% width */
+  min-width: 300px;        /* but never narrower than 300px */
+}
+
+/* 3) Swap their order so the image is on the right */
+.deals-carousel-container {
+  flex-direction: row-reverse;
+}
+
+/* 4) Tweak inner padding so your text has breathing room */
+.carousel-right {
+  padding-right: 1.5rem;
+  padding-left: 0.5rem;
+}
+
+/* 5) Fix the button wrapping issue */
+.btn-group {
+  display: flex;
+  gap: 1rem;               /* space between buttons */
+  flex-wrap: wrap;         /* wrap if space is tight */
+}
+/* === DEALS CAROUSEL LAYOUT OVERRIDES === */
+section.deals-carousel-container {
+  display: flex !important;
+  flex-direction: row-reverse !important;  /* image on right, text on left */
+  align-items: center !important;
+  gap: 2rem !important;
+  max-width: 1200px !important;
+  margin: 2rem auto !important;
+}
+
+/* make each half 50% of that container */
+.deals-carousel-container .carousel-left,
+.deals-carousel-container .carousel-right {
+  flex: 1 1 50% !important;
+  min-width: 300px !important;
+}
+
+/* fix the slide height */
+.deal-slide {
+  width: 100% !important;
+  height: 300px !important;
+}
+.deal-slide img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+/* 1) Kill the article grid so our sections can size normally */
+article {
+  display: block !important;
+  grid-template-columns: none !important;
+  grid-template-rows: none !important;
+}
+
+/* 2) Force the deals carousel into two equal flex columns */
+section.deals-carousel-container {
+  display: flex !important;
+  flex-direction: row-reverse !important; /* image on the right */
+  align-items: center !important;
+  gap: 2rem !important;
+  max-width: 1200px !important;
+  margin: 2rem auto !important;
+  width: 100% !important;
+}
+
+/* 3) Give each half its 50% share */
+.deals-carousel-container .carousel-left,
+.deals-carousel-container .carousel-right {
+  flex: 1 1 50% !important;
+  min-width: 300px !important;
+}
+
+/* 4) Constrain the slide height and cover the area */
+.deal-slide {
+  width: 100% !important;
+  height: 300px !important;
+}
+.deal-slide img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+/* ── FORCE 2-COLUMN LAYOUT ── */
+section.deals-carousel-container {
+  display: flex      !important;
+  flex-direction: row-reverse !important;  /* image on the right */
+  flex-wrap: nowrap  !important;  /* never wrap into rows */
+  gap: 2rem          !important;
+  max-width: 1200px  !important;
+  width: 100%        !important;
+  margin: 2rem auto  !important;
+}
+
+/* Each side is exactly half, and can shrink as needed */
+.deals-carousel-container .carousel-left,
+.deals-carousel-container .carousel-right {
+  flex: 0 0 50%     !important;  /* do not grow, do not wrap, exactly 50% */
+  min-width: 0      !important;  /* allow shrinking below any minimum */
+}
+
+/* Keep your slide height locked */
+.deal-slide {
+  height: 40vh !important;   /* 40% of the viewport height */
+  max-height: 500px !important; /* but never more than 500px */
+}
+.deal-slide img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  background-color: #f0f0f0;  /* optional: gray letterbox bars */
+}

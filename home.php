@@ -1,5 +1,28 @@
 <?php
   session_start();
+
+  // 1) database connection
+  require __DIR__ . '/includes/db.php';
+
+  // 2) query to fetch the most recent active deal
+  $sql = "
+  SELECT
+    d.deal_id,
+    p.product_name,
+    p.product_image,
+    l.listing_price,
+    d.discount_percent
+  FROM deals d
+  JOIN listing l
+    ON l.product_id = d.product_id
+   AND l.listing_status = 'Active'
+  JOIN products p
+    ON p.product_id = d.product_id
+  WHERE CURDATE() BETWEEN d.start_date AND d.end_date
+  ORDER BY d.start_date DESC
+";
+$res   = $conn->query($sql);
+$deals = $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
 ?>
 
 <!DOCTYPE html>
@@ -7,8 +30,8 @@
 <head>
   <meta charset="UTF-8" />
   <title>theMarket - Home</title>
-  <link rel="stylesheet" href="css/styleHome.css" />
   <link href="css/layout.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/styleHome.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search">
 </head>
 <body>
@@ -41,24 +64,46 @@
 
   <article>
     <!-- Deals section -->
-    <section class="deals-section">
-      <div class="deals-content">
-        <h2>Deals</h2>
-        <p class="sale-alert">Sale Alert!!!</p>
-        <p>Grab these items before they sell out</p>
-        <h3>Name of Item</h3>
-        <div class="btn-group">
-          <button class="btn btn-purchase">Purchase</button>
-          <button class="btn btn-addcart">Add to Cart</button>
-        </div>
-      </div>
+    <?php if (count($deals) > 0): ?>
+<section class="deals-carousel-container">
+  <div class="carousel-left">
+    <button id="prevDeal" class="carousel-arrow">&#10094;</button>
+    <button id="nextDeal" class="carousel-arrow">&#10095;</button>
 
-      <!-- Image placeholder for deal item -->
-      <div class="deals-image">
-        <!-- Replacing placeholder.png" with actual image once we have product database -->
-        <img src="images/profile.png" alt="Deal Item Image">
+    <div id="dealSlides">
+    <?php foreach ($deals as $i => $d): 
+      $orig  = (float)$d['listing_price'];
+      $disc  = $orig * (1 - $d['discount_percent']/100);
+    ?>
+      <div class="deal-slide"
+           data-index="<?= $i ?>"
+           data-name="<?= htmlspecialchars($d['product_name']) ?>"
+           data-orig="<?= number_format($orig,2) ?>"
+           data-disc="<?= number_format($disc,2) ?>"
+           style="<?= $i === 0 ? '' : 'display:none;' ?>">
+        <div class="discount-badge">-<?= $d['discount_percent'] ?>%</div>
+        <img src="images/<?= htmlspecialchars($d['product_image']) ?>"
+             alt="<?= htmlspecialchars($d['product_name']) ?>">
       </div>
-    </section>
+    <?php endforeach; ?>
+    </div>
+  </div>
+
+  <div class="carousel-right">
+    <h2>Deals</h2>
+    <p class="sale-alert">Sale Alert!!!</p>
+    <p>Grab these items before they sell out</p>
+    <h3 id="dealName"></h3>
+    <p class="price" id="dealPrice"></p>
+    <div class="btn-group">
+      <a href="#" id="dealPurchase" class="btn btn-purchase">Purchase</a>
+      <a href="#" id="dealAddCart" class="btn btn-addcart">Add to Cart</a>
+    </div>
+  </div>
+</section>
+<?php else: ?>
+  <p>No deals right now—check back soon!</p>
+<?php endif; ?>
 
     <!-- Featured Categories -->
     <section class="featured-categories">
@@ -142,5 +187,38 @@
   <!-- Link to JavaScript -->
   <!-- Don't have js file yet -->
   <script src="script.js"></script>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const slides  = document.querySelectorAll('.deal-slide');
+  const nameEl  = document.getElementById('dealName');
+  const priceEl = document.getElementById('dealPrice');
+  let idx = 0;
+
+  function showSlide(i) {
+    slides.forEach(s => s.style.display = 'none');
+    const s = slides[i];
+    s.style.display = 'block';
+
+    const name = s.dataset.name;
+    const orig = parseFloat(s.dataset.orig);
+    const disc = parseFloat(s.dataset.disc);
+
+    nameEl.textContent = name;
+    priceEl.innerHTML  = `<del>$${orig.toFixed(2)}</del> <span>$${disc.toFixed(2)}</span>`;
+  }
+
+  document.getElementById('prevDeal').addEventListener('click', () => {
+    idx = (idx - 1 + slides.length) % slides.length;
+    showSlide(idx);
+  });
+
+  document.getElementById('nextDeal').addEventListener('click', () => {
+    idx = (idx + 1) % slides.length;
+    showSlide(idx);
+  });
+
+  showSlide(0);
+});
+</script>
 </body>
 </html>
