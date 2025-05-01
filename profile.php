@@ -1,6 +1,37 @@
 <?php
-  session_start();
+session_start();
+
+if (!isset($_SESSION["user_id"])) {
+  header("Location: login.php");
+  exit;
+}
+
+$mysqli = require __DIR__ . "/db-connection.php";
+
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+}
+
+$sql = "SELECT user_name, user_first_name, user_last_name, user_email, user_phone, user_address, user_role_id, role_name
+        FROM user
+        JOIN role ON user.user_role_id = role.role_id
+        WHERE user_id = ?";
+
+$stmt = $mysqli->prepare($sql);
+
+if (!$stmt) {
+    die("SQL preparation failed: " . $mysqli->error);
+}
+
+$stmt->bind_param("i", $_SESSION["user_id"]);
+$stmt->execute();
+
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +49,7 @@
                 <a id="logo" href="home.php">theMarket</a>
                 <div class="nav-center">
                     <a href="home.php" id="home">Home</a>
-                    <form action="" method="">
+                    <form action="results.php">
                         <div class="search">
                             <span class="search-icon material-symbols-outlined">search</span>
                             <input class="search-input" type="search" placeholder="Search">
@@ -45,50 +76,61 @@
         <img src="images/profile.png" alt="User Profile Picture" class="profile-pic" />
         <!-- Display View -->
         <div id="display-view">
-            <h2 id="display-name">Custom Stickers LA</h2>
+            <h2 id="display-name"><?= htmlspecialchars($user["user_name"]) ?></h2>
+            <p id="display-fname">First Name: <?= htmlspecialchars($user["user_first_name"]) ?></p>
+            <p id="display-lname">Last Name: <?= htmlspecialchars($user["user_last_name"]) ?></p>
             <a href="logout.php">Logout</a>
-            <p id="display-location">Los Angeles, CA</p>
-            <p id="display-role">Seller</p>
-            <p id="display-rating">★★★★☆ (4.2/5)</p>
-            <p id="display-email">custom_stickers@exam.com</p>
-            <p id="display-phone">(337) 123-4567</p>
+            <p id="display-location">Address: <?= htmlspecialchars($user["user_address"]) ?></p>
+            <p id="display-role">Role: <?= htmlspecialchars($user["role_name"]) ?></p>
+            <p id="display-email">Email: <?= htmlspecialchars($user["user_email"]) ?></p>
+            <p id="display-phone">Phone: <?= htmlspecialchars($user["user_phone"]) ?></p>
             <button id="edit-btn">Edit Account</button>
         </div>
 
         <!-- Edit Form View -->
-  <form id="edit-form" class="hidden">
+  <form action="update-profile.php" id="edit-form" method="post" class="hidden">
     <label>
-      Name:
-      <input type="text" id="input-name" value="Custom Stickers LA"/>
+    Username:
+    <input type="text" name="username" id="input-name" value="<?= htmlspecialchars($user["user_name"]) ?>" />
     </label>
     <br>
     <label>
-      Location:
-      <input type="text" id="input-location" value="Los Angeles, CA" />
+    First Name:
+    <input type="text" name="firstname" id="input-fname" value="<?= htmlspecialchars($user["user_first_name"]) ?>" />
     </label>
     <br>
     <label>
-      Role:<br>
-      <label for="input-role">Seller</label>
-      <input type="radio" id="input-seller" name="input-role" value="Seller" /><br>
-      <label for="input-role">Buyer</label>
-      <input type="radio" id="input-buyer" name="input-role" value="Buyer"/><br>
+    Last Name:
+    <input type="text" name="lastname" id="input-lname" value="<?= htmlspecialchars($user["user_last_name"]) ?>" />
     </label>
     <br>
     <label>
-      Email:
-      <input type="email" id="input-email" value="custom_stickers@exam.com" />
+    Location:
+    <input type="text" name="address" id="input-location" value="<?= htmlspecialchars($user["user_address"]) ?>" />
     </label>
     <br>
     <label>
-      Phone:
-      <input type="tel" id="input-phone" value="(337) 123-4567" />
+    Phone:
+    <input type="tel" name="phone" id="input-phone" value="<?= htmlspecialchars($user["user_phone"]) ?>" />
+    </label>
+    <br>
+    <label>
+    Email:
+    <input type="email" name="email" id="input-email" value="<?= htmlspecialchars($user["user_email"]) ?>" />
+    </label>
+    <br>
+    <label>
+    Role:<br>
+    <label for="input-seller">Seller</label>
+    <input type="radio" id="input-seller" name="input-role" value="1" <?= $user["user_role_id"] == 1 ? "checked" : "" ?> />
+    <br>
+    <label for="input-buyer">Buyer</label>
+    <input type="radio" id="input-buyer" name="input-role" value="2" <?= $user["user_role_id"] == 2 ? "checked" : "" ?> />
     </label>
     <br>
     <button type="button" id="save-btn">Save Changes</button>
     <button type="button" id="cancel-btn">Cancel</button>
   </form>
-
       </section>
 
       <hr>
@@ -164,6 +206,6 @@
   </footer>
 
   <!--Account Settings JS-->
-  <script src="scripts/edit-acct.js"></script>
+  <script src="scripts/update-profile.js"></script>
 </body>
 </html>
