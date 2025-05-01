@@ -186,7 +186,7 @@ p#description {
 }
 
 h1#productName {
-    line-height: 0;
+    line-height: 1.5rem;
 }
 
 .transactions {
@@ -265,6 +265,21 @@ img#user {
     display: flex;
     width: max-content;
     flex-direction: column;
+}
+
+.related-item a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.related-item p {
+    padding-top: 0;
+    margin-top: 0;
+    transition: color 0.2s;
+}
+
+.related-item a:hover p {
+    color: #D08856;
 }
 
 p#relatedtitle {

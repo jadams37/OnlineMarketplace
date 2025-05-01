@@ -161,8 +161,10 @@
                 <div class="related-subsection">
                 <?php foreach($related as $relateditem): ?>
                     <div class="related-item">
-                        <img src="<?= sprintf("images/%s", $relateditem['product_image'])?>" alt="related product" id="related">
-                        <a href="<?=sprintf("product.php?listing_id=%s", $relateditem['listing_id'])?>" id="relatedname"><?= $relateditem['product_name']?></a>
+                        <a href="<?=sprintf("product.php?listing_id=%s", $relateditem['listing_id'])?>" id="relatedname">
+                            <img src="<?= sprintf("images/%s", $relateditem['product_image'])?>" alt="related product" id="related">
+                            <p><?= $relateditem['product_name']?></p>
+                        </a>
                     </div>
                 <?php endforeach; ?>
                 </div>
