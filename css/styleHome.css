@@ -457,6 +457,7 @@ section.categories h2 {
     color: var(--light-orange);
     border-color: var(--dark-red);
   }
+
   /* ── Center the grid & align items at the top ── */
 .product-grid {
   /* keep the existing grid-template-columns & gap */
@@ -529,7 +530,7 @@ main {
 section.categories {
   /* remove any old fixed width you deleted */
   max-width: 1200px;     /* match your grid width */
-  margin: 0 auto 4rem;   /* center it, plus 4rem bottom spacing */
+  margin: 0 auto 2rem;   /* center it, plus 4rem bottom spacing */
   padding-top: 2rem;     /* keep your top padding & divider */
   border-top: 1px solid #ddd;
 }
