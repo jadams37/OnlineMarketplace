@@ -12,8 +12,9 @@ if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
 
-$sql = "SELECT user_name, user_first_name, user_last_name, user_email, user_phone, user_address, user_role_id
+$sql = "SELECT user_name, user_first_name, user_last_name, user_email, user_phone, user_address, user_role_id, role_name
         FROM user
+        JOIN role ON user.user_role_id = role.role_id
         WHERE user_id = ?";
 
 $stmt = $mysqli->prepare($sql);
@@ -76,13 +77,13 @@ $user = $result->fetch_assoc();
         <!-- Display View -->
         <div id="display-view">
             <h2 id="display-name"><?= htmlspecialchars($user["user_name"]) ?></h2>
-            <p id="display-fname"><?= htmlspecialchars($user["user_first_name"]) ?></p>
-            <p id="display-lname"><?= htmlspecialchars($user["user_last_name"]) ?></p>
+            <p id="display-fname">First Name: <?= htmlspecialchars($user["user_first_name"]) ?></p>
+            <p id="display-lname">Last Name: <?= htmlspecialchars($user["user_last_name"]) ?></p>
             <a href="logout.php">Logout</a>
-            <p id="display-location"><?= htmlspecialchars($user["user_address"]) ?></p>
-            <p id="display-role"><?= htmlspecialchars($user["user_role_id"]) ?></p>
-            <p id="display-email"><?= htmlspecialchars($user["user_email"]) ?></p>
-            <p id="display-phone"><?= htmlspecialchars($user["user_phone"]) ?></p>
+            <p id="display-location">Address: <?= htmlspecialchars($user["user_address"]) ?></p>
+            <p id="display-role">Role: <?= htmlspecialchars($user["role_name"]) ?></p>
+            <p id="display-email">Email: <?= htmlspecialchars($user["user_email"]) ?></p>
+            <p id="display-phone">Phone: <?= htmlspecialchars($user["user_phone"]) ?></p>
             <button id="edit-btn">Edit Account</button>
         </div>
 
