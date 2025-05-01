@@ -2,7 +2,7 @@
  :root {
     --dark-red: #AA210F;
     --light-orange: #D08856;
-    --dark-grey: #444444;
+    --dark-grey: #41403C;
   }
 
   /* Headings */
@@ -71,7 +71,8 @@
   /* Purchase button with dark red to differ from the light orange add to cart one */
   .btn-purchase {
     border-color: var(--dark-red);
-    color: var(--dark-red);
+    color: var(--dark-grey);
+    text-decoration: none;
   }
   
   .btn-purchase:hover {
@@ -82,7 +83,8 @@
   /* Add-to-Cart button with light orange */
   .btn-addcart {
     border-color: var(--light-orange);
-    color: var(--light-orange);
+    color: var(--dark-grey);
+    text-decoration: none;
   }
   
   .btn-addcart:hover {
@@ -166,8 +168,8 @@
   font-size: 1.5rem;
   z-index: 10;
 }
-#prevDeal { left: -1rem; }
-#nextDeal { right: -1rem; }
+#prevDeal { left: -2.25rem; }
+#nextDeal { right: -2.5rem; }
 
 /* Right: text & buttons */
 .carousel-right {
@@ -243,6 +245,10 @@ section.deals-carousel-container {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
+  border-color: #41403C;
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 10px 10px 10px 10px;
 }
 /* 1) Kill the article grid so our sections can size normally */
 article {

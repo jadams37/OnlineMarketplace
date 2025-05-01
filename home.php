@@ -34,6 +34,7 @@ $deals = $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
   <link href="css/layout.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/styleHome.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search">
+  <script src="scripts/purchaseProduct.js"></script>
 </head>
 <body>
 
