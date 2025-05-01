@@ -45,27 +45,27 @@ $user = $result->fetch_assoc();
   <header>
     <!-- Navigation Bar -->
     <nav id="header">
-                <a id="logo" href="home.php">theMarket</a>
-                <div class="nav-center">
-                    <a href="home.php" id="home">Home</a>
-                    <form action="results.php">
-                        <div class="search">
-                            <span class="search-icon material-symbols-outlined">search</span>
-                            <input class="search-input" type="search" placeholder="Search">
-                        </div>
-                    </form>
-                    <a href="" id="cart">Cart</a>
-                </div>
-                <?php if(isset($_SESSION["user_id"])): ?>
-                    <a href="profile.php" class="profile">
-                        <img src="images/profile.png" alt="Profile" id="profile">
-                    </a>
-                <?php else: ?>
-                    <a href="login.php" class="profile">
-                        <img src="images/profile.png" alt="Profile" id="profile">
-                    </a>
-                <?php endif; ?>
-            </nav>
+        <a id="logo" href="home.php">theMarket</a>
+        <div class="nav-center">
+          <a href="home.php" id="home">Home</a>
+          <form action="results.php">
+            <div class="search">
+              <span class="search-icon material-symbols-outlined">search</span>
+              <input class="search-input" type="search" placeholder="Search">
+            </div>
+          </form>
+          <a href="" id="cart">Cart</a>
+        </div>
+        <?php if(isset($_SESSION["user_id"])): ?>
+          <a href="profile.php" class="profile">
+            <img src="images/profile.png" alt="Profile" id="profile">
+          </a>
+        <?php else: ?>
+          <a href="login.php" class="profile">
+            <img src="images/profile.png" alt="Profile" id="profile">
+          </a>
+        <?php endif; ?>
+    </nav>
   </header>
 
   <article>
