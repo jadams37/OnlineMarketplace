@@ -3,8 +3,8 @@
 
 // 1) database credentials
 $db_host     = 'localhost';     
-$db_user     = 'root';
-$db_password = '';
+$db_user     = 'user';
+$db_password = 'password';
 $db_name     = 'onlinemarketplace';
 
 // 2) MySQLi connection
