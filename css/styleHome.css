@@ -2,7 +2,7 @@
  :root {
     --dark-red: #AA210F;
     --light-orange: #D08856;
-    --dark-grey: #444444;
+    --dark-grey: #41403C;
   }
 
   /* Headings */
@@ -100,7 +100,7 @@
   /* Purchase button with dark red to differ from the light orange add to cart one */
   .btn-purchase {
     border-color: var(--dark-red);
-    color: var(--dark-red);
+    color: var(--dark-grey);
     text-decoration: none;
   }
   
@@ -112,7 +112,7 @@
   /* Add-to-Cart button with light orange */
   .btn-addcart {
     border-color: var(--light-orange);
-    color: var(--light-orange);
+    color: var(--dark-grey);
     text-decoration: none;
   }
   

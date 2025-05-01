@@ -210,7 +210,7 @@ h1#productName {
 
 .purchase {
     border-color: #AA210F;
-    color: #AA210F;
+    color: #41403C;
 }
 
 .purchase:hover {
@@ -220,7 +220,7 @@ h1#productName {
 
 .addtocart {
     border-color: #D08856;
-    color: #D08856;
+    color: #41403C;
 }
 
 .addtocart:hover {
