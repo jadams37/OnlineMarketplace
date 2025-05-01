@@ -22,14 +22,16 @@
             <!-- Navigation Bar -->
             <nav id="header">
                 <a id="logo" href="home.php">theMarket</a>
-                <a href="home.php" id="home">Home</a>
-                <form action="" method="">
-                    <div class="search">
-                        <span class="search-icon material-symbols-outlined">search</span>
-                        <input class="search-input" type="search" placeholder="Search">
-                    </div>
-                </form>
-                <a href="" id="cart">Cart</a>
+                <div class="nav-center">
+                    <a href="home.php" id="home">Home</a>
+                    <form action="" method="">
+                        <div class="search">
+                            <span class="search-icon material-symbols-outlined">search</span>
+                            <input class="search-input" type="search" placeholder="Search">
+                        </div>
+                    </form>
+                    <a href="" id="cart">Cart</a>
+                </div>
                 <?php if(isset($_SESSION["user_id"])): ?>
                     <a href="profile.html" class="profile">
                         <img src="images/profile.png" alt="Profile" id="profile">
@@ -80,10 +82,13 @@
             <!-- Contains a secondary navigation bar and the copyright -->
             <nav id="footer">
                 <a id="logo" href="home.php">theMarket</a>
-                <a href="">Customer Care</a>
-                <a href="">Legal Use</a>
-                <a href="">Careers</a>
-                <a href="">Follow Us</a>
+                <div class="nav-center">
+                    <a href="">Customer Care</a>
+                    <a href="">Legal Use</a>
+                    <a href="">Careers</a>
+                    <a href="">Follow Us</a>
+                </div>
+                <div></div>
             </nav>
             <p id="copyright">&copy; 2025, Interactive Web Designs</p>
         </footer>
