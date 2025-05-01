@@ -48,6 +48,7 @@ $stmt->close();
   <title>theMarket – <?= htmlspecialchars($catName) ?></title>
   <link href="css/layout.css" rel="stylesheet" type="text/css">
   <link href="css/styleHome.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
 <body>
 
