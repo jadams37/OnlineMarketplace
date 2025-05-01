@@ -33,7 +33,7 @@
                     <a href="" id="cart">Cart</a>
                 </div>
                 <?php if(isset($_SESSION["user_id"])): ?>
-                    <a href="profile.html" class="profile">
+                    <a href="profile.php" class="profile">
                         <img src="images/profile.png" alt="Profile" id="profile">
                     </a>
                 <?php else: ?>
