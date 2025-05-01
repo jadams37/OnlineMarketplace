@@ -13,17 +13,17 @@
   
   
   /* 5) Featured Categories */
-  .featured-categories {
+  .categories {
     text-align: center;
     padding: 2rem 1rem;
-    width: 1080px;
+  
     margin: 0 auto;
     border-bottom: 1px solid #ddd;
     padding-bottom: 2rem;
     margin-bottom: 2rem;
   }
   
-  .featured-categories p {
+  .categories p {
     margin-bottom: 2rem;
   }
   
@@ -42,35 +42,6 @@
   
   .category-card img {
     max-width: 80px;
-    margin-bottom: 1rem;
-  }
-  
-  /* 6) Recently Viewed */
-  .recently-viewed {
-    text-align: center;
-    padding: 2rem 1rem;
-    width: 1080px;
-    margin: 0 auto;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 2rem;
-    margin-bottom: 2rem;
-  }
-  
-  .recently-items {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin-top: 2rem;
-  }
-  
-  .recently-card {
-    width: 150px;
-    text-align: center;
-  }
-  
-  .recently-card img {
-    max-width: 100px;
     margin-bottom: 1rem;
   }
   
@@ -204,7 +175,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1rem;
+  padding: .5rem;
+  color: var(--dark-red);
 }
 .carousel-right #dealName {
   margin: 0.5rem 0;
@@ -212,10 +184,6 @@
 .carousel-right .price del {
   color: #888;
   margin-right: 0.5rem;
-}
-.carousel-right .countdown {
-  font-style: italic;
-  margin-bottom: 1rem;
 }
 /* 1) Make the deals section into two equal columns */
 .deals-carousel-container {
@@ -339,4 +307,245 @@ section.deals-carousel-container {
   height: 100% !important;
   object-fit: contain !important;
   background-color: #f0f0f0;  /* optional: gray letterbox bars */
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.product-card h3 {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+.product-card p {
+  font-weight: bold;
+}
+/* 1) Divider + spacing between Deals and Categories */
+section.categories {
+  margin-top: 2.5rem;           /* space above the section */
+  padding-top: 2.5rem;          /* extra padding for breathing room */
+  border-top: 1px solid #ddd;   /* faint grey line */
+}
+
+/* 2) More space between the <h2> and the icons */
+section.categories h2 {
+  margin-bottom: 3.5rem;
+}
+
+/* 3) Space each category card out vertically (in case of wrapping) */
+.categories-list .category-card {
+  margin-bottom: 3.5rem;
+}
+
+/* 4) Underline the category name in light-orange, and style the link */
+.category-card h3 {
+  display: inline-block;                     /* allow border-bottom */
+  border-bottom: 3px solid var(--light-orange);
+  color: var(--dark-grey);
+  transition: color 0.2s, border-color 0.2s;
+  padding-bottom: .5rem;
+  align-items: center;
+}
+
+/* 5) Hover state: swap to dark-red */
+.category-card a:hover h3 {
+  color: var(--light-orange);
+  border-color: var(--dark-red);
+}
+
+/* 6) Give the icon a tiny lift on hover, for feedback */
+.category-card a:hover img {
+  transform: translateY(-3px);
+  transition: transform 0.2s;
+}
+
+/* 1) Ensure each card is a vertical flex container */
+.category-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+/* 2) Center the label under the icon */
+.category-card h3 {
+  display: block;           /* full-width block for auto-margins */
+  margin: 1rem auto 0;      /* 1rem above, auto left/right, no bottom */
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--light-orange);
+  transition: color 0.2s, border-color 0.2s;
+  text-align: center;
+}
+
+/* 3) Give a little more space between icon and label */
+.category-card img {
+  margin-bottom: 1.5rem;
+}
+
+/* 4) Evenly spread the cards */
+.categories-list {
+  justify-content: space-evenly !important;
+}
+
+/* 5) Hover state: swap underline + text color */
+.category-card a:hover h3 {
+  color: var(--light-orange);
+  border-color: var(--dark-red);
+}
+/* Remove browser’s native blue underline on the category links */
+.category-card a {
+  text-decoration: none;
+}
+
+/* Keep only your orange border underline */
+.category-card h3 {
+  text-decoration: none; /* just in case */
+  border-bottom: 3px solid var(--light-orange);
+}
+
+/* ----------------------------
+   Center the product grid
+   ---------------------------- */
+   .product-grid {
+    display: grid;
+    /* auto‐fit will fill as many columns as will fit; each min 200px */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 2rem auto;       /* centers the whole grid */
+    justify-items: center;   /* centers each card in its column */
+  }
+  
+  /* ----------------------------
+     Reset browser link underlines
+     ---------------------------- */
+  .product-card a {
+    text-decoration: none;
+    color: inherit;          /* preserve your dark-grey/hover colors */
+  }
+  
+  /* ----------------------------
+     Orange underline on title & price
+     ---------------------------- */
+  .product-card h3,
+  .product-card p {
+    display: inline-block;  
+    margin: 0.5rem 0;
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid var(--light-orange);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  
+  /* ----------------------------
+     Hover state: switch to dark-red
+     ---------------------------- */
+  .product-card a:hover h3,
+  .product-card a:hover p {
+    color: var(--light-orange);
+    border-color: var(--dark-red);
+  }
+  /* ── Center the grid & align items at the top ── */
+.product-grid {
+  /* keep the existing grid-template-columns & gap */
+  margin: 2rem auto;          /* center overall */
+  justify-items: center;      /* center each card horizontally */
+  align-items: start;         /* align each card to the top */
+}
+
+/* ── Force each card into a vertical flex container ── */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Always put the name on its own line ── */
+.product-card h3 {
+  display: block;
+  text-align: center;
+  margin: 0.5rem 0 0.25rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid var(--light-orange);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+/* ── Always put the price on its own line ── */
+.product-card p {
+  display: block;
+  text-align: center;
+  margin: 0;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid var(--light-orange);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+/* ── Hover state: switch both name & price to red underlines ── */
+.product-card a:hover h3,
+.product-card a:hover p {
+  color: var(--light-orange);
+  border-color: var(--dark-red);
+}
+/* ── Center the page’s main content ── */
+main {
+  max-width: 1200px;    /* same width as your grid */
+  margin: 0 auto;       /* center it */
+  padding: 0 1rem;      /* little side padding */
+}
+
+/* (Just to be sure your title is centered within that wrapper) */
+main h1 {
+  text-align: center;
+  margin: 2rem 0;       /* keep your vertical spacing */
+}
+/* ── Center the main wrapper ── */
+main {
+  max-width: 1200px;    /* don’t let it get any wider */
+  margin: 0 auto;       /* this is the magic centering */
+  padding: 0 1rem;      /* keep a little breathing room on mobile */
+}
+
+/* ── Center & top-align each card in the grid ── */
+.product-grid {
+  /* keep your existing grid-template-columns, gap, etc. */
+  margin: 2rem auto;       /* center the grid itself */
+  justify-items: center;   /* center each card in its cell */
+  align-items: start;      /* align them to the top */
+  max-width: inherit;      /* match the main wrapper’s width */
+}
+/* ── Make Categories section center itself ── */
+section.categories {
+  /* remove any old fixed width you deleted */
+  max-width: 1200px;     /* match your grid width */
+  margin: 0 auto 4rem;   /* center it, plus 4rem bottom spacing */
+  padding-top: 2rem;     /* keep your top padding & divider */
+  border-top: 1px solid #ddd;
+}
+
+/* ── Center the Category title too ── */
+section.categories h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* ── Main wrapper for category.php ── */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ── Center & top-align all product cards ── */
+.product-grid {
+  /* keep your existing grid-template-columns + gap */
+  max-width: inherit;      /* inherit 1200px from <main> */
+  margin: 2rem auto;       /* center grid inside main */
+  justify-items: center;   /* center each card in its cell */
+  align-items: start;      /* top-align the cards */
 }

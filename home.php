@@ -94,12 +94,14 @@ $deals = $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
   <div class="carousel-right">
     <h2>Deals</h2>
     <p class="sale-alert">Sale Alert!!!</p>
-    <p>Grab these items before they sell out</p>
+    <p>Grab these items before they sell out.</p>
     <h3 id="dealName"></h3>
     <p class="price" id="dealPrice"></p>
     <div class="btn-group">
       <a href="#" id="dealPurchase" class="btn btn-purchase">View Item</a>
-      <a href="#" id="dealAddCart" class="btn btn-addcart">Add to Cart</a>
+      <button type="button" id="dealAddCart" class="btn btn-addcart"  onclick="addToCart()">
+      Add to Cart
+      </button>
     </div>
   </div>
 </section>
@@ -108,55 +110,26 @@ $deals = $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
 <?php endif; ?>
 
     <!-- Featured Categories -->
-    <section class="featured-categories">
-      <h2>Featured Categories</h2>
-      <p>Check out these categories picked specially for you.</p>
-      <div class="categories-list">
-        <!-- Category Card 1 -->
-        <div class="category-card">
-          <img src="images/sale_icon.png" alt="Sale Icon">
-          <h3>Sale</h3>
-        </div>
-
-        <!-- Category Card 2 -->
-        <div class="category-card">
-          <img src="images/trending_icon.png" alt="Trending Icon">
-          <h3>Trending</h3>
-        </div>
-
-        <!-- Category Card 3 -->
-        <div class="category-card">
-          <img src="images/last_viewed_icon.png" alt="Last Viewed Icon">
-          <h3>Last Viewed</h3>
-        </div>
+    <?php
+  // right after your deals/carousel code, before </article>
+  $catsRs = $conn->query("SELECT category_id, name FROM categories");
+  $categories = $catsRs->fetch_all(MYSQLI_ASSOC);
+?>
+<section class="categories">
+  <h2>Categories</h2>
+  <div class="categories-list">
+    <?php foreach($categories as $cat): ?>
+      <div class="category-card">
+        <a href="category.php?category_id=<?= $cat['category_id'] ?>">
+          <!-- You can swap in real icons named e.g. clothing.png, shoes.png, accessories.png -->
+          <img src="images/<?= strtolower($cat['name']) ?>.png"
+               alt="<?= htmlspecialchars($cat['name']) ?>">
+          <h3><?= htmlspecialchars($cat['name']) ?></h3>
+        </a>
       </div>
-    </section>
-
-    <!-- Recently Viewed -->
-    <section class="recently-viewed">
-      <h2>Recently Viewed</h2>
-      <p>Jump back in...</p>
-      <div class="recently-items">
-        <!-- Item 1 -->
-        <div class="recently-card">
-          <!-- Replacing "item_placeholder.png" with an actual image once database added -->
-          <img src="images/item_placeholder.png" alt="Last Item Viewed">
-          <h4>Last Item Viewed</h4>
-        </div>
-
-        <!-- Item 2 -->
-        <div class="recently-card">
-          <img src="images/item_placeholder.png" alt="Recently Viewed Item">
-          <h4>Recently Viewed Item</h4>
-        </div>
-
-        <!-- Item 3 -->
-        <div class="recently-card">
-          <img src="images/item_placeholder.png" alt="Recently Viewed Item">
-          <h4>Recently Viewed Item</h4>
-        </div>
-      </div>
-    </section>
+    <?php endforeach; ?>
+  </div>
+</section>
 
     <!-- About Us -->
     <section class="about-section">
@@ -233,5 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
   showSlide(0);
 });
 </script>
+<script src="scripts/purchaseProduct.js"></script>
 </body>
 </html>
