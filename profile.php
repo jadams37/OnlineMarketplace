@@ -18,7 +18,7 @@
                 <a id="logo" href="home.php">theMarket</a>
                 <div class="nav-center">
                     <a href="home.php" id="home">Home</a>
-                    <form action="" method="">
+                    <form action="results.php">
                         <div class="search">
                             <span class="search-icon material-symbols-outlined">search</span>
                             <input class="search-input" type="search" placeholder="Search">
