@@ -187,6 +187,7 @@ p#description {
 
 h1#productName {
     line-height: 1.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .transactions {
