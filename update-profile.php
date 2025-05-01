@@ -42,6 +42,7 @@ if (!$stmt) {
 $stmt->bind_param("ssssssii", $username, $email, $address, $phone, $fname, $lname, $roleid, $user_id);
 
 if ($stmt->execute()) {
+    $_SESSION["user_role_id"] = $roleid;
     echo json_encode(['success' => true]);
 } else {
     echo json_encode(['success' => false, 'message' => 'Execute failed: ' . $stmt->error]);

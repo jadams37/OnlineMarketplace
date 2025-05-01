@@ -45,7 +45,7 @@ saveBtn.addEventListener('click', async () => {
       document.getElementById('display-location').textContent = updatedData.location;
       document.getElementById('display-email').textContent = updatedData.email;
       document.getElementById('display-phone').textContent = updatedData.phone;
-      document.getElementById('display-role').textContent = updatedData.role == 1 ? 'Seller' : 'Buyer';
+      document.getElementById('display-role').textContent = updatedData.role == 1 ? 'Buyer' : 'Seller';
     }
     else {
       alert('Failed to save changes: ' + result.message);

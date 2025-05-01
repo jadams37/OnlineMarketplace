@@ -122,41 +122,100 @@ $user = $result->fetch_assoc();
     <label>
     Role:<br>
     <label for="input-seller">Seller</label>
-    <input type="radio" id="input-seller" name="input-role" value="1" <?= $user["user_role_id"] == 1 ? "checked" : "" ?> />
+    <input type="radio" id="input-seller" name="input-role" value= 2 />
     <br>
     <label for="input-buyer">Buyer</label>
-    <input type="radio" id="input-buyer" name="input-role" value="2" <?= $user["user_role_id"] == 2 ? "checked" : "" ?> />
+    <input type="radio" id="input-buyer" name="input-role" value= 1 />
     </label>
     <br>
     <button type="button" id="save-btn">Save Changes</button>
     <button type="button" id="cancel-btn">Cancel</button>
   </form>
-      </section>
+    </section>
 
-      <hr>
+    <hr>
+
+
+
+    <?php
+    require 'db-connection.php';
+    $categories_result = $mysqli->query("SELECT * FROM categories");
+    if (!$categories_result) {
+      die("Query failed: " . $mysqli->error);
+}
+    $categories = $categories_result->fetch_all(MYSQLI_ASSOC);
+    ?>
+
 
       <!-- Listings -->
       <section class="user-listings">
-        <h3>Your Listings</h3>
-        <div class="product-card">
-          <img src="images/profile.png" alt="Product Image">
-          <div>
-            <h4>Gummy Bear Salute Sticker</h4>
-            <p>$3.99 - Stickers/Logos/Tags</p>
-            <button>Edit</button>
-            <button>Delete</button>
-          </div>
-        </div>
-        <div class="product-card">
-          <img src="images/profile.png" alt="Product Image">
-          <div>
-            <h4>Angry Dog Sticker</h4>
-            <p>$5.99 - Stickers/Logos/Tags</p>
-            <button>Edit</button>
-            <button>Delete</button>
-          </div>
-        </div>
-        <button>Add Listing</button>
+
+
+        <!-- Add Listing Form -->
+        <form action="listing-process.php" method="post" enctype="multipart/form-data" id="listing-form" class="hidden">
+        <input type="hidden" name="listing_id" value="" id="listing-id">
+  
+        <label for="product_name">Product Name:</label>
+  <input type="text" name="product_name" id="product_name" required>
+  <br>
+
+  <label for="product_description">Description:</label><br>
+  <textarea name="product_description" id="product_description" rows="4" cols="50"></textarea>
+  <br>
+
+  <label for="product_brand">Brand:</label>
+  <input type="text" name="product_brand" id="product_brand">
+  <br>
+        
+        <label for="price">Price ($):</label>
+  <input type="number" step="0.01" name="price" id="price" required>
+  <br>
+
+  <label>Condition:</label>
+  <label><input type="radio" name="product_condition" value="New" checked> New</label>
+  <label><input type="radio" name="product_condition" value="Used"> Used</label>
+  <br><br>
+
+  <input type="file" name="product_image" id="product_image" accept="image/*">
+  <br>
+
+  <label for="quantity">Quantity:</label>
+  <input type="number" name="quantity" id="quantity" required>
+  <br>
+
+  <label for="keywords">Keywords (comma-separated):</label>
+  <input type="text" name="keywords" id="keywords">
+  <br>
+
+  <label for="category_id">Category:</label>
+  <select name="category_id" id="category_id" required>
+    <?php
+    foreach ($categories as $category) {
+        echo "<option value=\"" . htmlspecialchars($category["category_id"]) . "\">" . htmlspecialchars($category["name"]) . "</option>";
+    }
+    ?>
+  </select>
+  <br>
+
+  <label for="status">Status:</label>
+  <select name="status" id="status">
+    <option value="Active">Active</option>
+    <option value="Inactive">Inactive</option>
+    <option value="Sold">Sold</option>
+  </select>
+
+
+  <!--stupid submit button iwsnt working the way i want-->
+  <button type="submit" name="submit_listing" id="submit_listing">Save Listing</button>
+  <button type="button" name="cancel_listing" id="cancel_listing" onclick="document.getElementById('listing-form').classList.add('hidden')">Cancel</button>
+</form>
+
+
+<!--checks if user is a seller-->
+<?php if (isset($_SESSION['user_role_id']) && $_SESSION['user_role_id'] == 2): ?>
+  <button onclick="document.getElementById('listing-form').classList.remove('hidden')">Add Listing</button>
+<?php endif; ?>
+
       </section>
 
       <hr>
@@ -207,5 +266,10 @@ $user = $result->fetch_assoc();
 
   <!--Account Settings JS-->
   <script src="scripts/update-profile.js"></script>
+
+  <!-- New Listing JS -->
+  <script src="scripts/new-listing.js"></script>
+
+
 </body>
 </html>
