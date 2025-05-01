@@ -34,6 +34,7 @@ $deals = $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
   <link href="css/layout.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/styleHome.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search">
+  <script src="scripts/purchaseProduct.js"></script>
 </head>
 <body>
 
@@ -98,7 +99,7 @@ $deals = $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
     <h3 id="dealName"></h3>
     <p class="price" id="dealPrice"></p>
     <div class="btn-group">
-      <a href="#" id="dealPurchase" class="btn btn-purchase">View Item</a>
+      <a href="#" id="dealPurchase" class="btn btn-purchase" >View Item</a>
       <a href="#" id="dealAddCart" class="btn btn-addcart">Add to Cart</a>
     </div>
   </div>

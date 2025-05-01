@@ -101,6 +101,7 @@
   .btn-purchase {
     border-color: var(--dark-red);
     color: var(--dark-red);
+    text-decoration: none;
   }
   
   .btn-purchase:hover {
@@ -112,6 +113,7 @@
   .btn-addcart {
     border-color: var(--light-orange);
     color: var(--light-orange);
+    text-decoration: none;
   }
   
   .btn-addcart:hover {
