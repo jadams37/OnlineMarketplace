@@ -2,14 +2,14 @@
 session_start();
 require __DIR__ . '/includes/db.php';
 
-// 1) Read & validate the category_id from the URL
+// Read and validate the category_id from the URL
 $catId = filter_input(INPUT_GET, 'category_id', FILTER_VALIDATE_INT);
 if (!$catId) {
     header('Location: home.php');
     exit;
 }
 
-// 2) Fetch the category name
+// Get the category name
 $stmt = $conn->prepare("SELECT name FROM categories WHERE category_id = ?");
 $stmt->bind_param('i', $catId);
 $stmt->execute();
@@ -22,7 +22,7 @@ if (!$stmt->fetch()) {
 }
 $stmt->close();
 
-// 3) Fetch all active listings in that category
+// Get all active listings in that category
 $sql = "
   SELECT 
     l.listing_id, 
@@ -34,6 +34,7 @@ $sql = "
   WHERE p.category_id = ? 
     AND l.listing_status = 'Active'
 ";
+
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('i', $catId);
 $stmt->execute();
@@ -41,6 +42,7 @@ $res = $stmt->get_result();
 $products = $res->fetch_all(MYSQLI_ASSOC);
 $stmt->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,6 +127,6 @@ $stmt->close();
     </nav>
     <p id="copyright">&copy; 2025, Interactive Web Designs</p>
   </footer>
-
+  
 </body>
 </html>

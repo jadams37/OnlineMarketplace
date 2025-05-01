@@ -1,10 +1,10 @@
 <?php
   session_start();
 
-  // 1) database connection
+  // database connection
   require __DIR__ . '/includes/db.php';
 
-  // 2) query to fetch the most recent active deal
+  // query to get the most recent active deal
   $sql = "
   SELECT
     l.listing_id,
@@ -110,9 +110,8 @@ $deals = $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
   <p>No deals right now—check back soon!</p>
 <?php endif; ?>
 
-    <!-- Featured Categories -->
+    <!-- Categories Section-->
     <?php
-  // right after your deals/carousel code, before </article>
   $catsRs = $conn->query("SELECT category_id, name FROM categories");
   $categories = $catsRs->fetch_all(MYSQLI_ASSOC);
 ?>
@@ -122,7 +121,6 @@ $deals = $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
     <?php foreach($categories as $cat): ?>
       <div class="category-card">
         <a href="category.php?category_id=<?= $cat['category_id'] ?>">
-          <!-- You can swap in real icons named e.g. clothing.png, shoes.png, accessories.png -->
           <img src="images/<?= strtolower($cat['name']) ?>.png"
                alt="<?= htmlspecialchars($cat['name']) ?>">
           <h3><?= htmlspecialchars($cat['name']) ?></h3>
@@ -146,7 +144,6 @@ $deals = $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
 
   <!-- Footer -->
   <footer>
-    <!-- Contains a secondary navigation bar and the copyright -->
     <nav id="footer">
       <a id="logo" href="home.php">theMarket</a>
       <div class="nav-center">
@@ -158,55 +155,10 @@ $deals = $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
       <div></div>
     </nav>
     <p id="copyright">&copy; 2025, Interactive Web Designs</p>
-</footer>
+  </footer>
 
-  <!-- Link to JavaScript -->
-  <!-- Don't have js file yet -->
-  <script src="script.js"></script>
-  <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const slides  = document.querySelectorAll('.deal-slide');
-  const nameEl  = document.getElementById('dealName');
-  const priceEl = document.getElementById('dealPrice');
-  let idx = 0;
-
-  function showSlide(i) {
-  slides.forEach(s => s.style.display = 'none');
-  const s = slides[i];
-  s.style.display = 'block';
-
-  const name       = s.dataset.name;
-  const orig       = parseFloat(s.dataset.orig);
-  const disc       = parseFloat(s.dataset.disc);
-  const listingId  = s.dataset.listingid;
-
-  // Update the right-hand text
-  nameEl.textContent = name;
-  priceEl.innerHTML  = `<del>$${orig.toFixed(2)}</del> <span>$${disc.toFixed(2)}</span>`;
-
-  // Wire up the links
-  const purchaseBtn = document.getElementById('dealPurchase');
-  const cartBtn     = document.getElementById('dealAddCart');
-
-  purchaseBtn.textContent = 'View Item';
-  purchaseBtn.href        = `product.php?listing_id=${listingId}`;
-
-  cartBtn.href            = `cart.php?add=${listingId}`;
-}
-
-  document.getElementById('prevDeal').addEventListener('click', () => {
-    idx = (idx - 1 + slides.length) % slides.length;
-    showSlide(idx);
-  });
-
-  document.getElementById('nextDeal').addEventListener('click', () => {
-    idx = (idx + 1) % slides.length;
-    showSlide(idx);
-  });
-
-  showSlide(0);
-});
-</script>
-<script src="scripts/purchaseProduct.js"></script>
+  <script src="scripts/dealsCarousel.js"></script>
+  <script src="scripts/purchaseProduct.js"></script>
+  
 </body>
 </html>

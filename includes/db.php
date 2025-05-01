@@ -1,7 +1,6 @@
 <?php
-// includes/db.php
 
-// 1) database credentials
+// 1) database creds
 $db_host     = 'localhost';     
 $db_user     = 'user';
 $db_password = 'password';
