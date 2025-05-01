@@ -87,7 +87,7 @@ $stmt->close();
   </header>
 
   <!-- Main Content -->
-  <main>
+  <article>
     <h1 style="text-align:center; margin:2rem 0;">
       Category: <?= htmlspecialchars($catName) ?>
     </h1>
@@ -108,7 +108,7 @@ $stmt->close();
         <?php endforeach; ?>
       <?php endif; ?>
     </div>
-  </main>
+  </article>
 
   <!-- Footer -->
   <footer>
